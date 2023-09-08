@@ -1,4 +1,5 @@
 import { Billboard as BillboardType } from "@/types";
+import Image from "next/image";
 
 interface BillboardProps {
   data: BillboardType;
@@ -13,7 +14,13 @@ const Billboard: React.FC<BillboardProps> = ({ data }) => {
       {/*    backgroundImage: `url(${data?.imageUrl}`,*/}
       {/*  }}*/}
       {/*>*/}
-      <img
+      <Image
+        style={{ objectPosition: "50% 50%", objectFit: "fill" }}
+        width={1280}
+        height={720}
+        quality={100}
+        priority
+        alt={data.label}
         src={data?.imageUrl}
         className="rounded-xl relative aspect-square md:aspect-[2.4/1] overflow-hidden"
       />
