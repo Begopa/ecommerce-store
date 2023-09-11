@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-
-import { Color, Size } from "@/types";
-import Button from "@/components/ui/button";
 import { Plus, X } from "lucide-react";
 import { Dialog } from "@headlessui/react";
+
 import IconButton from "@/components/ui/icon-button";
-import Filter from "@/app/(routes)/category/[categoryId]/components/filter";
+import Button from "@/components/ui/button";
+import { Color, Size } from "@/types";
+
+import Filter from "./filter";
 
 interface MobileFiltersProps {
   sizes: Size[];
@@ -26,32 +27,30 @@ const MobileFilters: React.FC<MobileFiltersProps> = ({ sizes, colors }) => {
         Filters
         <Plus size={20} />
       </Button>
+
       <Dialog
         open={open}
         as="div"
         className="relative z-40 lg:hidden"
         onClose={onClose}
       >
-        {/* Background */}
-        <div className="fixed inset-0 bg-black bg-opacity-25">
-          {/* Dialog position */}
-          <div className="fixed inset-0 z-40 flex">
-            <Dialog.Panel
-              className="relative ml-auto flex h-full w-full max-w-xs
-             flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl"
-            >
-              {/* Close Button */}
-              <div className="flex items-center justify-end px-4">
-                <IconButton onClick={onClose} icon={<X size={15} />} />
-              </div>
+        {/* Background color and opacity */}
+        <div className="fixed inset-0 bg-black bg-opacity-25" />
 
-              {/* Render the filters */}
-              <div className="p-4">
-                <Filter valueKey="sizeId" name="Sizes" data={sizes} />
-                <Filter valueKey="colorId" name="Colors" data={colors} />
-              </div>
-            </Dialog.Panel>
-          </div>
+        {/* Dialog position */}
+        <div className="fixed inset-0 z-40 flex">
+          <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-6 shadow-xl">
+            {/* Close button */}
+            <div className="flex items-center justify-end px-4">
+              <IconButton icon={<X size={15} />} onClick={onClose} />
+            </div>
+
+            {/* Render the filters */}
+            <div className="p-4">
+              <Filter valueKey="sizeId" name="Sizes" data={sizes} />
+              <Filter valueKey="colorId" name="Colors" data={colors} />
+            </div>
+          </Dialog.Panel>
         </div>
       </Dialog>
     </>

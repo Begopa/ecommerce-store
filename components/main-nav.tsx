@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+
 import { cn } from "@/lib/utils";
 import { Category } from "@/types";
 
@@ -17,14 +18,15 @@ const MainNav: React.FC<MainNavProps> = ({ data }) => {
     label: route.name,
     active: pathname === `/category/${route.id}`,
   }));
+
   return (
-    <nav className="mx-6 flex items-center space-x-4 l g:space-x-6">
+    <nav className="mx-6 flex items-center space-x-4 lg:space-x-6">
       {routes.map((route) => (
         <Link
           key={route.href}
           href={route.href}
           className={cn(
-            "tex-sm font-medium transition-colors hover:text-black",
+            "text-sm font-medium transition-colors hover:text-black",
             route.active ? "text-black" : "text-neutral-500",
           )}
         >
