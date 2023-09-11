@@ -1,13 +1,15 @@
+import Container from "@/components/ui/container";
+import Billboard from "@/components/ui/billboard";
+import ProductCard from "@/components/ui/product-card";
+import NoResults from "@/components/ui/no-results";
+
 import getProducts from "@/actions/get-products";
+import getCategory from "@/actions/get-category";
 import getSizes from "@/actions/get-sizes";
 import getColors from "@/actions/get-colors";
-import getCategory from "@/actions/get-category";
-import Container from "@/components/ui/container";
-import Billboard from "@/components/billboard";
-import Filter from "@/app/(routes)/category/[categoryId]/components/filter";
-import NoResults from "@/components/ui/no-results";
-import ProductCard from "@/components/ui/product-card";
-import MobileFilters from "@/app/(routes)/category/[categoryId]/components/mobile-filters";
+
+import Filter from "./components/filter";
+import MobileFilters from "./components/mobile-filters";
 
 export const revalidate = 0;
 
@@ -30,7 +32,6 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
     colorId: searchParams.colorId,
     sizeId: searchParams.sizeId,
   });
-
   const sizes = await getSizes();
   const colors = await getColors();
   const category = await getCategory(params.categoryId);
