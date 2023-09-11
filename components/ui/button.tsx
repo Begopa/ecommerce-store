@@ -16,14 +16,15 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         px-5
         py-3
         disabled:cursor-not-allowed
-        disabled:opacity-0=50
+        disabled:opacity-50
         text-white
         font-semibold
-        hover:opacity-74
+        hover:opacity-75
         transition
         `,
           className,
         )}
+        disabled={disabled}
         ref={ref}
         {...props}
       >
