@@ -8,7 +8,7 @@ import Currency from "@/components/ui/currency";
 import { useRouter } from "next/navigation";
 
 interface ProductCardProps {
-  data: Product[];
+  data: Product;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
